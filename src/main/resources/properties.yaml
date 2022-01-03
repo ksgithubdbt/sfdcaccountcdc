@@ -1,0 +1,20 @@
+https:
+  listener:
+    Host: "0.0.0.0"
+    Port: "8081"
+sftp:
+  Host: "35.175.152.10"
+  Port: "22"
+  Wdir: "/home/ksapps/files"
+  Username: "ksapps"
+  Password: "ksapps"
+sfdc:
+  Username: "keerthis.apps@gmail.com"
+  Password: "Salesforce!1"
+  token: "iOlBok8szk5HOb4X0BNFKcMil"
+sqldb:
+  Host: "sql-databaseserver.database.windows.net"
+  Port: "1433"
+  User: "ksapps"
+  Password: "Sqldb@!1"
+  db: "SQLDB"

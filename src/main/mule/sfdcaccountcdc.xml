@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:amqp="http://www.mulesoft.org/schema/mule/amqp" xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+http://www.mulesoft.org/schema/mule/amqp http://www.mulesoft.org/schema/mule/amqp/current/mule-amqp.xsd">
+	<salesforce:sfdc-config name="Salesforce_Config" doc:name="Salesforce Config" doc:id="29e7e56f-ceb1-4089-86c5-49571675a684" >
+		<salesforce:basic-connection username="${sfdc.Username}" password="${sfdc.Password}" securityToken="${sfdc.token}" />
+	</salesforce:sfdc-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="031a813a-e67a-4009-8c17-8026de116ab0" file="properties.yaml" />
+	<flow name="sfdcaccountcdcFlow" doc:id="d7d22406-53eb-4193-af26-32112ca5db54" >
+		<salesforce:subscribe-channel-listener streamingChannel="/data/AccountChangeEvent" doc:name="Subscribe channel listener" doc:id="dd551a4c-5b74-471f-aee5-749a8a397aa3" config-ref="Salesforce_Config"/>
+		<logger level="INFO" doc:name="Logger" doc:id="7e8dd0df-50f2-43c1-8d11-ce6106d91c0c" message="#[payload]"/>
+	</flow>
+</mule>
